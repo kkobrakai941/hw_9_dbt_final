@@ -1,0 +1,25 @@
+name: hw_9_dbt_final
+version: '1.0'
+profile: clickhouse
+config-version: 2
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analysis"]
+docs-paths: ["docs"]
+target-path: "target"
+clean-targets: ["target"]
+
+vars:
+  low_bound: 50
+  medium_bound: 300
+
+models:
+  staging:
+    +schema: stg_hw_9_dbt_final
+    +materialized: view
+  marts:
+    +schema: mart_hw_9_dbt_final
+    +materialized: table
